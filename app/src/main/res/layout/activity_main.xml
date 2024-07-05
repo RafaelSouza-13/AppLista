@@ -40,4 +40,28 @@
         android:text="Sobrenome"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
         tools:layout_editor_absoluteX="73dp" />
+
+    <EditText
+        android:id="@+id/editTextCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Curso desejado"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSobrenome"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/editTextContato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Telefone de contato"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCurso"
+        tools:layout_editor_absoluteX="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
