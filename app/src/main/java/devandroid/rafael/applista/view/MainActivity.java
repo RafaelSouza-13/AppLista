@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void loadIds(){
         editTextNome = findViewById(R.id.editTextNome);
         editTextSobrenome = findViewById(R.id.editTextSobrenome);
-        editTextCurso = findViewById(R.id.editTextCurso);
+        editTextCurso = findViewById(R.id.editTextTarefa);
         editTextContato = findViewById(R.id.editTextContato);
 
         btnSalvar = findViewById(R.id.btnSalvar);

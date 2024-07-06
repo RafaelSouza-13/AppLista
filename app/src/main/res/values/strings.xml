@@ -3,13 +3,13 @@
     <string name="txt_titulo">App lista</string>
     <string name="txt_edit_nome">Nome</string>
     <string name="txt_edit_sobrenome">Sobrenome</string>
-    <string name="txt_edit_curso">Curso desejado</string>
+    <string name="txt_edit_tarefa">Nome da Tarefa</string>
     <string name="txt_edit_telefone_contato">Telefone de contato</string>
     <string name="txt_btn_salvar">Salvar</string>
     <string name="btn_limpar">Limpar</string>
     <string name="btn_finalizar">Finalizar</string>
     <string name="hint_text_nome">Digite seu nome</string>
     <string name="hint_text_sobrenome">Digite seu sobrenome</string>
-    <string name="hint_text_curso">Digite o curso</string>
+    <string name="hint_text_Tarefa">Digite a tarefa</string>
     <string name="hint_text_contato">Digite seu telefone para contato</string>
 </resources>

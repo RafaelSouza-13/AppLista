@@ -25,12 +25,12 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:ems="10"
-        android:hint="@string/txt_edit_nome"
+        android:hint="@string/hint_text_nome"
         android:inputType="text"
-        android:text="@string/hint_text_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+    <!-- android:text="@string/txt_edit_nome" -->
 
     <EditText
         android:id="@+id/editTextSobrenome"
@@ -40,23 +40,23 @@
         android:hint="@string/hint_text_sobrenome"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/txt_edit_sobrenome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNome" />
+    <!-- android:text="@string/txt_edit_sobrenome" -->
 
     <EditText
-        android:id="@+id/editTextCurso"
+        android:id="@+id/editTextTarefa"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
-        android:hint="@string/hint_text_curso"
+        android:hint="@string/hint_text_Tarefa"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/txt_edit_curso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSobrenome" />
+    <!-- android:text="@string/txt_edit_tarefa" -->
 
     <EditText
         android:id="@+id/editTextContato"
@@ -65,11 +65,11 @@
         android:layout_margin="16dp"
         android:hint="@string/hint_text_contato"
         android:ems="10"
-        android:inputType="text"
-        android:text="@string/txt_edit_telefone_contato"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCurso" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTarefa" />
+    <!-- android:text="@string/txt_edit_telefone_contato" -->
 
     <Button
         android:id="@+id/btnFinalizar"

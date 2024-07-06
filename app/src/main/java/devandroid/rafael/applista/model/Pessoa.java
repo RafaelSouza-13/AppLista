@@ -60,6 +60,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Nome:'" + this.nome +" "+this.sobrenome + ", curso: " + this.curso.getTarefa() + ", telefone:'" + this.telefone;
+        return "Nome:'" + this.nome +" "+this.sobrenome + ", tarefa: " + this.curso.getTarefa() + ", telefone:'" + this.telefone;
     }
 }
