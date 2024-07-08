@@ -14,13 +14,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import devandroid.rafael.applista.R;
+import devandroid.rafael.applista.controller.PessoaController;
 import devandroid.rafael.applista.model.Tarefa;
 import devandroid.rafael.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-    SharedPreferences preferences;
-    SharedPreferences.Editor listaTarefa;
-    public static final String NOME_PREFERENCES = "pref_lista_tarefa";
+
     EditText editTextNome;
     EditText editTextSobrenome;
     EditText editTextTarefa;
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnLimpar;
     Button btnFinalizar;
 
+    PessoaController pessoaController;
 
 
     @Override
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        pessoaController = new PessoaController(MainActivity.this);
         loadIds();
     }
 
@@ -55,14 +56,9 @@ public class MainActivity extends AppCompatActivity {
         btnLimpar = findViewById(R.id.btnLimpar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
-        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        listaTarefa = preferences.edit();
-
         Pessoa pessoa = new Pessoa();
-        pessoa.setNome(preferences.getString("nome", ""));
-        pessoa.setSobrenome(preferences.getString("sobrenome", ""));
-        pessoa.setTelefone(preferences.getString("telefone", ""));
-        pessoa.getTarefa().setTarefa(preferences.getString("tarefa", ""));
+        pessoa = pessoaController.buscarDados(pessoa);
+
         editTextNome.setText(pessoa.getNome());
         editTextSobrenome.setText(pessoa.getSobrenome());
         editTextTarefa.setText(pessoa.getTarefa().getTarefa());
@@ -75,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 editTextSobrenome.setText("");
                 editTextContato.setText("");
                 editTextTarefa.setText("");
-                listaTarefa.clear();
-                listaTarefa.apply();
+                pessoaController.limparDados();
             }
         });
 
@@ -97,11 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         tarefa,
                         editTextContato.getText().toString());
                 Toast.makeText(MainActivity.this, "Salvando: "+pessoa.toString(), Toast.LENGTH_LONG).show();
-                listaTarefa.putString("nome", pessoa.getNome());
-                listaTarefa.putString("sobrenome", pessoa.getSobrenome());
-                listaTarefa.putString("telefone", pessoa.getTelefone());
-                listaTarefa.putString("tarefa", pessoa.getTarefa().getTarefa());
-                listaTarefa.apply();
+                pessoaController.salvarPessoa(pessoa);
             }
         });
     }
