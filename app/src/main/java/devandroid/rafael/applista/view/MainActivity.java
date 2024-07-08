@@ -19,6 +19,7 @@ import devandroid.rafael.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
+    SharedPreferences.Editor listaTarefa;
     public static final String NOME_PREFERENCES = "pref_lista_tarefa";
     EditText editTextNome;
     EditText editTextSobrenome;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaTarefa = preferences.edit();
+        listaTarefa = preferences.edit();
 
         Pessoa pessoa = new Pessoa();
         pessoa.setNome(preferences.getString("nome", ""));
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 editTextSobrenome.setText("");
                 editTextContato.setText("");
                 editTextTarefa.setText("");
+                listaTarefa.clear();
+                listaTarefa.apply();
             }
         });
 
