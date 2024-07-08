@@ -1,5 +1,6 @@
 package devandroid.rafael.applista.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import devandroid.rafael.applista.model.Tarefa;
 import devandroid.rafael.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "pref_lista_tarefa";
     EditText editTextNome;
     EditText editTextSobrenome;
     EditText editTextCurso;
@@ -38,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         loadIds();
     }
 
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.btnSalvar);
         btnLimpar = findViewById(R.id.btnLimpar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
+
+        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor listaTarefa = preferences.edit();
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +84,11 @@ public class MainActivity extends AppCompatActivity {
                         tarefa,
                         editTextContato.getText().toString());
                 Toast.makeText(MainActivity.this, "Salvando: "+pessoa.toString(), Toast.LENGTH_LONG).show();
-
+                listaTarefa.putString("nome", pessoa.getNome());
+                listaTarefa.putString("sobrenome", pessoa.getSobrenome());
+                listaTarefa.putString("telefone", pessoa.getTelefone());
+                listaTarefa.putString("tarefa", pessoa.getTarefa().getTarefa());
+                listaTarefa.apply();
             }
         });
     }
