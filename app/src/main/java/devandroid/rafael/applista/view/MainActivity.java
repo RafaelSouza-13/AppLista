@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOME_PREFERENCES = "pref_lista_tarefa";
     EditText editTextNome;
     EditText editTextSobrenome;
-    EditText editTextCurso;
+    EditText editTextTarefa;
     EditText editTextContato;
 
     Button btnSalvar;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void loadIds(){
         editTextNome = findViewById(R.id.editTextNome);
         editTextSobrenome = findViewById(R.id.editTextSobrenome);
-        editTextCurso = findViewById(R.id.editTextTarefa);
+        editTextTarefa = findViewById(R.id.editTextTarefa);
         editTextContato = findViewById(R.id.editTextContato);
 
         btnSalvar = findViewById(R.id.btnSalvar);
@@ -57,13 +57,23 @@ public class MainActivity extends AppCompatActivity {
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
         SharedPreferences.Editor listaTarefa = preferences.edit();
 
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome(preferences.getString("nome", ""));
+        pessoa.setSobrenome(preferences.getString("sobrenome", ""));
+        pessoa.setTelefone(preferences.getString("telefone", ""));
+        pessoa.getTarefa().setTarefa(preferences.getString("tarefa", ""));
+        editTextNome.setText(pessoa.getNome());
+        editTextSobrenome.setText(pessoa.getSobrenome());
+        editTextTarefa.setText(pessoa.getTarefa().getTarefa());
+        editTextContato.setText(pessoa.getTelefone());
+
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editTextNome.setText("");
                 editTextSobrenome.setText("");
                 editTextContato.setText("");
-                editTextCurso.setText("");
+                editTextTarefa.setText("");
             }
         });
 
@@ -78,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Tarefa tarefa = new Tarefa(editTextCurso.getText().toString());
+                Tarefa tarefa = new Tarefa(editTextTarefa.getText().toString());
                 Pessoa pessoa = new Pessoa(editTextNome.getText().toString(),
                         editTextSobrenome.getText().toString(),
                         tarefa,
