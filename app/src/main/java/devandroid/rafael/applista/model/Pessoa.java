@@ -4,17 +4,17 @@ public class Pessoa {
     private long id;
     private String nome;
     private String sobrenome;
-    private Tarefa curso;
+    private Tarefa tarefa;
     private String telefone;
 
     public Pessoa(){
 
     }
 
-    public Pessoa(String nome, String sobrenome, Tarefa curso, String telefone) {
+    public Pessoa(String nome, String sobrenome, Tarefa tarefa, String telefone) {
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.curso = curso;
+        this.tarefa = tarefa;
         this.telefone = telefone;
     }
 
@@ -42,12 +42,12 @@ public class Pessoa {
         this.sobrenome = sobrenome;
     }
 
-    public Tarefa getCurso() {
-        return curso;
+    public Tarefa getTarefa() {
+        return tarefa;
     }
 
-    public void setCurso(Tarefa curso) {
-        this.curso = curso;
+    public void setTarefa(Tarefa tarefa) {
+        this.tarefa = tarefa;
     }
 
     public String getTelefone() {
@@ -60,6 +60,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Nome:'" + this.nome +" "+this.sobrenome + ", tarefa: " + this.curso.getTarefa() + ", telefone:'" + this.telefone;
+        return "Nome:'" + this.nome +" "+this.sobrenome + ", tarefa: " + this.tarefa.getTarefa() + ", telefone:'" + this.telefone;
     }
 }
