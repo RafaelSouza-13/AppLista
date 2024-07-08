@@ -7,11 +7,11 @@ import devandroid.rafael.applista.view.MainActivity;
 
 public class PessoaController {
     private Pessoa pessoa;
-    private SharedPreferences preferences;
-    private final String NOME_PREFERENCES = "pref_lista_tarefa";
-    private SharedPreferences.Editor listaTarefa;
+    private final SharedPreferences preferences;
+    private final SharedPreferences.Editor listaTarefa;
 
     public PessoaController(MainActivity mainActivity){
+        String NOME_PREFERENCES = "pref_lista_tarefa";
         this.preferences = mainActivity.getSharedPreferences(NOME_PREFERENCES, 0);
         this.listaTarefa = preferences.edit();
     }
