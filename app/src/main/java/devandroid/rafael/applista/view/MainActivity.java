@@ -17,7 +17,6 @@ import devandroid.rafael.applista.model.Tarefa;
 import devandroid.rafael.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-
     EditText editTextNome;
     EditText editTextSobrenome;
     EditText editTextCurso;
