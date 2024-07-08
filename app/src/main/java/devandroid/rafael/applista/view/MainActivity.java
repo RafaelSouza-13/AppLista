@@ -1,5 +1,6 @@
 package devandroid.rafael.applista.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import devandroid.rafael.applista.R;
+import devandroid.rafael.applista.controller.PessoaController;
 import devandroid.rafael.applista.model.Tarefa;
 import devandroid.rafael.applista.model.Pessoa;
 
@@ -20,13 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editTextNome;
     EditText editTextSobrenome;
-    EditText editTextCurso;
+    EditText editTextTarefa;
     EditText editTextContato;
 
     Button btnSalvar;
     Button btnLimpar;
     Button btnFinalizar;
 
+    PessoaController pessoaController;
 
 
     @Override
@@ -39,19 +42,27 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        pessoaController = new PessoaController(MainActivity.this);
         loadIds();
     }
 
     protected void loadIds(){
         editTextNome = findViewById(R.id.editTextNome);
         editTextSobrenome = findViewById(R.id.editTextSobrenome);
-        editTextCurso = findViewById(R.id.editTextTarefa);
+        editTextTarefa = findViewById(R.id.editTextTarefa);
         editTextContato = findViewById(R.id.editTextContato);
 
         btnSalvar = findViewById(R.id.btnSalvar);
         btnLimpar = findViewById(R.id.btnLimpar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
+
+        Pessoa pessoa = new Pessoa();
+        pessoa = pessoaController.buscarDados(pessoa);
+
+        editTextNome.setText(pessoa.getNome());
+        editTextSobrenome.setText(pessoa.getSobrenome());
+        editTextTarefa.setText(pessoa.getTarefa().getTarefa());
+        editTextContato.setText(pessoa.getTelefone());
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 editTextNome.setText("");
                 editTextSobrenome.setText("");
                 editTextContato.setText("");
-                editTextCurso.setText("");
+                editTextTarefa.setText("");
+                pessoaController.limparDados();
             }
         });
 
@@ -74,13 +86,13 @@ public class MainActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Tarefa tarefa = new Tarefa(editTextCurso.getText().toString());
+                Tarefa tarefa = new Tarefa(editTextTarefa.getText().toString());
                 Pessoa pessoa = new Pessoa(editTextNome.getText().toString(),
                         editTextSobrenome.getText().toString(),
                         tarefa,
                         editTextContato.getText().toString());
                 Toast.makeText(MainActivity.this, "Salvando: "+pessoa.toString(), Toast.LENGTH_LONG).show();
-
+                pessoaController.salvarPessoa(pessoa);
             }
         });
     }

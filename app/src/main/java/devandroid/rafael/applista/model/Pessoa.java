@@ -8,7 +8,7 @@ public class Pessoa {
     private String telefone;
 
     public Pessoa(){
-
+        tarefa = new Tarefa();
     }
 
     public Pessoa(String nome, String sobrenome, Tarefa tarefa, String telefone) {
